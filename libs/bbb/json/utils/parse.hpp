@@ -40,14 +40,14 @@ namespace bbb
             dst = src;
         }
 
-        // WORKAROUND: commented out
-        // static inline void parse(const bbb::json &json, std::string &value) {
-        //     if(!json.is_string()) {
-        //         detail::print_parse_error("bbb::json_utils::parse string",  skip_json_isnt_string);
-        //         return;
-        //     }
-        //     value = json;
-        // }
+        static inline void parse(const bbb::json &json, std::string &value) {
+            if(!json.is_string()) {
+                detail::print_parse_error("bbb::json_utils::parse string",  skip_json_isnt_string);
+                return;
+            }
+            std::string s = json;
+            value = s;
+        }
 
         static inline void parse(const bbb::json &json, bool &value)
         {
