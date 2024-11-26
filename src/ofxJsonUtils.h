@@ -80,7 +80,7 @@ namespace bbb {
         
         static inline void validationAssert(const ofJson &json,
                                             const std::string &key)
-            throw(key_not_found_exception)
+        noexcept(false)
         {
             if(!hasKey(json, key)) {
                 throw key_not_found_exception("json: \"" + key + "\" is not exists.");
@@ -91,7 +91,7 @@ namespace bbb {
         static inline void validationAssert(const ofJson &json,
                                             const std::string &key,
                                             key_types && ... keys)
-        throw(key_not_found_exception)
+        noexcept(false)
         {
             validationAssert(json, key);
             validationAssert(json, std::forward<key_types>(keys) ...);
